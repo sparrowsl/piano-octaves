@@ -1,6 +1,9 @@
 <script>
+	import { show_hints } from "$lib/config.svelte.js";
 	import { get_random_key, play_key } from "$lib/index.js";
 	import C5 from "$lib/notes/c5.mp3";
+	import BlackKey from "./black-key.svelte";
+	import PlainWhiteKey from "./plain-white-key.svelte";
 
 	let random_key = $state(get_random_key());
 </script>
@@ -12,37 +15,36 @@
 		<h1 class="text-neutral-800 text-lg">
 			Find the <span class="font-bold">&ldquo;{random_key}&rdquo;</span> key
 		</h1>
+		<div>
+			<p class="text-sm">
+				Show Hints:
+				<input
+					type="checkbox"
+					class="rounded"
+					onchange={(e) => (show_hints.value = e.target.checked)}
+				/>
+			</p>
+		</div>
 	</section>
 
 	<section>
 		<div class="relative flex items-center space-x-1 shadow-xl">
-			<button
-				type="button"
-				class="white-key bg-white border border-gray-400 relative"
-				onclick={() => play_key("C")}
-			>
-				<p class="absolute bottom-0 w-full text-center font-bold text-xl">C</p>
-			</button>
+			<PlainWhiteKey key_name={"C"} />
 
 			<button
 				type="button"
 				class="white-key bg-white border border-gray-400 relative"
 			>
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="black-key bg-black rounded-t-lg top-0 relative"
-					onclick={() => play_key("C#")}
-				>
-					<p class="absolute bottom-2 w-full text-center text-white">C#</p>
-				</div>
+				<BlackKey key_name={"C#"} />
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="flex items-end justify-center absolute bottom-0 top-0 w-full font-bold text-xl"
 					onclick={() => play_key("D")}
 				>
-					D
+					{#if show_hints.value}
+						D
+					{/if}
 				</div>
 			</button>
 
@@ -50,51 +52,35 @@
 				type="button"
 				class="white-key bg-white border border-gray-400 relative"
 			>
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="black-key bg-black rounded-t-lg top-0 relative"
-					onclick={() => play_key("D#")}
-				>
-					<p class="absolute bottom-2 w-full text-center text-white">D#</p>
-				</div>
+				<BlackKey key_name={"D#"} />
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="flex items-end justify-center absolute bottom-0 top-0 w-full font-bold text-xl"
 					onclick={() => play_key("E")}
 				>
-					E
+					{#if show_hints.value}
+						E
+					{/if}
 				</div>
 			</button>
 
-			<button
-				type="button"
-				class="white-key bg-white border border-gray-400 relative"
-				onclick={() => play_key("F")}
-			>
-				<p class="absolute bottom-0 w-full text-center font-bold text-xl">F</p>
-			</button>
+			<PlainWhiteKey key_name={"F"} />
 
 			<button
 				type="button"
 				class="white-key bg-white border border-gray-400 relative"
 			>
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="black-key bg-black rounded-t-lg top-0 relative"
-					onclick={() => play_key("F#")}
-				>
-					<p class="absolute bottom-2 w-full text-center text-white">F#</p>
-				</div>
+				<BlackKey key_name={"F#"} />
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="flex items-end justify-center absolute bottom-0 top-0 w-full font-bold text-xl"
 					onclick={() => play_key("G")}
 				>
-					G
+					{#if show_hints.value}
+						G
+					{/if}
 				</div>
 			</button>
 
@@ -102,21 +88,16 @@
 				type="button"
 				class="white-key bg-white border border-gray-400 relative"
 			>
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="black-key bg-black rounded-t-lg top-0 relative"
-					onclick={() => play_key("G#")}
-				>
-					<p class="absolute bottom-2 w-full text-center text-white">G#</p>
-				</div>
+				<BlackKey key_name={"G#"} />
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="flex items-end justify-center absolute bottom-0 top-0 w-full font-bold text-xl"
 					onclick={() => play_key("A")}
 				>
-					A
+					{#if show_hints.value}
+						A
+					{/if}
 				</div>
 			</button>
 
@@ -124,31 +105,20 @@
 				type="button"
 				class="white-key bg-white border border-gray-400 relative"
 			>
-				<!-- svelte-ignore a11y_click_events_have_key_events -->
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div
-					class="black-key bg-black rounded-t-lg top-0 relative"
-					onclick={() => play_key("A#")}
-				>
-					<p class="absolute bottom-2 w-full text-center text-white">A#</p>
-				</div>
+				<BlackKey key_name={"A#"} />
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div
 					class="flex items-end justify-center absolute bottom-0 top-0 w-full font-bold text-xl"
 					onclick={() => play_key("B")}
 				>
-					B
+					{#if show_hints.value}
+						B
+					{/if}
 				</div>
 			</button>
 
-			<button
-				type="button"
-				class="white-key bg-white border border-gray-400 relative"
-				onclick={async () => await new Audio(C5).play()}
-			>
-				<p class="absolute bottom-0 w-full text-center font-bold text-xl">C</p>
-			</button>
+			<PlainWhiteKey key_name={"C5"} />
 		</div>
 	</section>
 </main>

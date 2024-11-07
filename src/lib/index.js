@@ -10,6 +10,7 @@ import F from "./notes/f.mp3";
 import FSharp from "./notes/f-sharp.mp3";
 import G from "./notes/g.mp3";
 import GSharp from "./notes/g-sharp.mp3";
+import C5 from "$lib/notes/c5.mp3";
 
 /** @typedef {"C" | "D" | "E" | "F" | "G" | "A" | "B" | "C#" | "D#" | "F#" | "G#" | "A#"} keys */
 
@@ -46,6 +47,8 @@ function get_sound(key) {
 			return GSharp;
 		case "A#":
 			return ASharp;
+		default:
+			return C5;
 	}
 }
 
