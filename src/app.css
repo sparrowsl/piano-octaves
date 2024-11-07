@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-	/* --color-black-key: ""; */
-}
-
 .black-key {
 	width: 50px;
 	height: 150px;

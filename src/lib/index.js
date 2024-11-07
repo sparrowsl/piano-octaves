@@ -11,8 +11,16 @@ import FSharp from "./notes/f-sharp.mp3";
 import G from "./notes/g.mp3";
 import GSharp from "./notes/g-sharp.mp3";
 
-/** @param {"C" | "D" | "E" | "F" | "G" | "A" | "B" | "C#" | "D#" | "F#" | "G#" | "A#"} key */
-export const get_sound = (key) => {
+/** @typedef {"C" | "D" | "E" | "F" | "G" | "A" | "B" | "C#" | "D#" | "F#" | "G#" | "A#"} keys */
+
+/** @param {keys} key */
+export async function play_key(key) {
+	const sound = get_sound(key);
+	await new Audio(sound).play();
+}
+
+/** @param {keys} key */
+function get_sound(key) {
 	switch (key) {
 		case "C":
 			return C;
@@ -39,4 +47,12 @@ export const get_sound = (key) => {
 		case "A#":
 			return ASharp;
 	}
+}
+
+const keys = ["C", "D", "E", "F", "G", "A", "B", "C#", "D#", "F#", "G#", "A#"];
+
+export const get_random_key = () => {
+	const idx = Math.floor(Math.random() * keys.length);
+	console.log(idx);
+	return keys[idx];
 };
