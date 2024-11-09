@@ -1,19 +1,16 @@
 <script>
-	import { show_hints } from "$lib/config.svelte.js";
-	import { get_random_key, play_key } from "$lib/index.js";
-	import C5 from "$lib/notes/c5.mp3";
+	import { random_key, show_hints, info_message } from "$lib/config.svelte.js";
+	import { play_key } from "$lib/index.js";
 	import BlackKey from "./black-key.svelte";
 	import PlainWhiteKey from "./plain-white-key.svelte";
-
-	let random_key = $state(get_random_key());
 </script>
 
 <main
-	class="flex flex-col gap-20 items-center justify-center h-screen bg-gray-200"
+	class="flex flex-col gap-10 items-center justify-center min-h-screen bg-gray-200"
 >
 	<section>
 		<h1 class="text-neutral-800 text-lg">
-			Find the <span class="font-bold">&ldquo;{random_key}&rdquo;</span> key
+			Find the <span class="font-bold">&ldquo;{random_key.value}&rdquo;</span> key
 		</h1>
 		<div>
 			<p class="text-sm">
@@ -21,9 +18,10 @@
 				<input
 					type="checkbox"
 					class="rounded"
-					onchange={(e) => (show_hints.value = e.target.checked)}
+					bind:checked={show_hints.value}
 				/>
 			</p>
+			<p>Info: {info_message.value || "N/A"}</p>
 		</div>
 	</section>
 
