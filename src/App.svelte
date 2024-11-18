@@ -1,8 +1,8 @@
 <script>
-	import { random_key, show_hints, info_message } from "$lib/config.svelte.js";
-	import { play_key } from "$lib/index.js";
-	import BlackKey from "./black-key.svelte";
-	import PlainWhiteKey from "./plain-white-key.svelte";
+import { random_key, show_hints, info_message } from "$lib/config.svelte.js";
+import { play_key } from "$lib/index.js";
+import BlackKey from "./black-key.svelte";
+import PlainWhiteKey from "./plain-white-key.svelte";
 </script>
 
 <main
